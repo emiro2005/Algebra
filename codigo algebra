@@ -1,0 +1,70 @@
+//Multiplicación de matrices
+print("ingrese el orden de la matriz A")
+filasA, columnasA = int(input()),int(input())
+print("ingrese el orden de la matriz B")
+filasB, columnasB = int(input()),int(input())
+
+if columnasA==filasB:
+    matrizA=[]
+    for i in range(filasA):
+        matrizA.append([0]*columnasA)
+    
+    matrizB=[]
+    for i in range(filasB):
+        matrizB.append([0]*columnasB)
+    
+print("Ingrese la matriz A")
+for filas in range(filasA):
+    for columnas in range(columnasA):
+        matrizA[filas][columnas]=float(
+            input(f"Ingrese la posición ${filas}, ${columnas} de la matriz A"))
+        
+print("Ingrese la matriz B")
+for filas in range(filasB):
+    for columnas in range(columnasB):
+        matrizB[filas][columnas]=float(
+            input(f"Ingrese la posición ${filas}, ${columnas} de la matriz B"))
+        
+matrizc=[]
+for i in range(filasA):                         
+    matrizc.append([0]*columnasB)
+
+for i in range(len (matrizA)):
+    for j in range(len(matrizB[0])):
+        for k in range(len (matrizB)):
+            matrizc[i][j] += matrizA[i][k]*matrizB[k][j] 
+
+print("la matriz resultante es:")
+for i in matrizc:
+    print(i)
+
+//Suma y resta de matrices  
+import numpy as np
+
+filas = int(input('Ingrese el número de filas de las matrices '))  
+columnas = int(input('\nIngrese el número de columnas de las matrices '))  
+
+
+def crear_matriz(filas, columnas):
+    f = -1; c = -1
+    e_fil = []
+    for i in range(0, filas):  
+        e_col = []
+        f += 1
+        for j in range(0, columnas):
+            c += 1
+            valor = int(input(f'Ingrese el valor del componente {i},{j} => '))
+            e_col.append(valor)
+        e_fil.append(e_col)
+    return e_fil
+
+
+matrizA = np.array(crear_matriz(filas, columnas))
+matrizB = np.array(crear_matriz(filas, columnas))
+
+suma = matrizA + matrizB
+resta = matrizA - matrizB
+
+
+print(f"Suma de matrices: \n{suma} ")
+print(f"Resta de matrices: \n{resta} ")
